@@ -1,7 +1,7 @@
 # TranslateJS
 
 <p>Este plugin está orientado al manejo de traducciones en el contexto HTML y JavaScript.</p>
-<p>Para el correcto funcionamiento del mismo es necesario incluir la versión mas reciente de [jQuery](https://jquery.com/download/).</p>
+<p>Para el correcto funcionamiento del mismo es necesario incluir la versión mas reciente de [jQuery](https://jquery.com/download/) .</p>
 
 ## Usabilidad HMTL:
 
