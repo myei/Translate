@@ -1,9 +1,9 @@
-# TranslateJS
+## TranslateJS
 
-Este plugin esta orientado al manejo de traducciones en el contexto HTML y JavaScript
-Para el correcto funcionamiento del mismo es necesario incluir la versión mas reciente de jQuery
+<p>Este plugin está orientado al manejo de traducciones en el contexto HTML y JavaScript.</p>
+<p>Para el correcto funcionamiento del mismo es necesario incluir la versión mas reciente de [jQuery](https://jquery.com/download/).</p>
 
-# Usabilidad HMTL:
+## Usabilidad HMTL:
 
 Asigna el contenido HTML del elemento al resultado del keyword:
 
@@ -17,7 +17,7 @@ En los campos de tipo *input* establece el placeholder del elemento al resultado
 <input type="text" class="translate" data-translate="greetings.good.morning">
 ```
 
-# Usabilidad JS:
+## Usabilidad JS:
 
 Define el idioma manualmente de acuerdo a los idiomas definidos:
 
@@ -25,7 +25,7 @@ Define el idioma manualmente de acuerdo a los idiomas definidos:
 Translate.setLang('lang');
 ```
 
-Por defecto es false. Utiliza el idioma del navegador (si esta definido):
+Por defecto es false. Utiliza el idioma del navegador (si está definido):
 
 ```
 Translate.useBrowserLang(true);
