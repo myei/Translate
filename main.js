@@ -65,10 +65,18 @@ var Translate = function () {
 	};
 
 	return {
-		setLang,
-		getLang,
-		useBrowserLang,
-		get,
+		setLang: function () {
+			return setLang();
+		},
+		getLang: function () {
+			return getLang();
+		},
+		useBrowserLang: function () {
+			return useBrowserLang();
+		},
+		get: function () {
+			return get();
+		},
 		init: function (argument) {
 			translateFields();
 		}
