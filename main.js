@@ -1,14 +1,11 @@
 /**
- *	Estas Plugin permite el manejo de traducciones de un contexto HTML y JavaScript
- *
- * 	Por parte del HTML, sólo se tiene que agregar a los campos que queremos 
- *	traducidos lo siguiente:
+ *	Estas funciones orientadas a clases, permiten el manejo de traducciones de un
+ *	sistema que contenga HTML o JavaScript, permitiendo la traducción completa de
+ * 	la página con solo agregar a los campos que queremos traducidos lo siguiente:
  *
  *		- clase: translate
  *		- data-translate: <keywords a traducir, eg: hello or hello.world>
- *
- *	En JS sólo hay que invocar lo siguiente -> Translate.get(<keyword>)
- *
+ *	
  *	El contenido de estos keywords deben estar en variables globales en formato
  *	json
  *
@@ -20,20 +17,20 @@ var Translate = function () {
 	/**
 	 *	Idioma por defecto
 	 */
-	var lang = 'es';
+	var lang = 'lang_es';
 
 	/**
 	 *	Si queremos establecer el idioma del navegador
 	 */
 	var useBrowserLang = function (useIt) {
-		lang = useIt ? (navigator.language || navigator.userLanguage).substr(0,2) : lang;
+		lang = useIt ? 'lang_' + (navigator.language || navigator.userLanguage).substr(0,2) : lang;
 	};
 
 	/**
 	 *	Para establecer un idioma en específico (de los existentes)
 	 */
 	var setLang = function (_lang) {
-		lang = typeof window[_lang] === 'undefined' ? lang : _lang;
+		lang = typeof window['lang_' + _lang] === 'undefined' ? lang : 'lang_' + _lang;
 	};
 
 	/**
