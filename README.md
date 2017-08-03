@@ -7,13 +7,13 @@ Para el correcto funcionamiento del mismo es necesario incluir la versión mas r
 
 Asigna el contenido HTML del elemento al resultado del keyword:
 
-```
+```html
 <span class="translate" data-translate="hello"></span>
 ```
 
 En los campos de tipo **input** establece el placeholder del elemento al resultado del keyword:
 
-```
+```html
 <input type="text" class="translate" data-translate="greetings.good.morning">
 ```
 
