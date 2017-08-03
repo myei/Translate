@@ -10,6 +10,34 @@ Para el correcto funcionamiento del mismo es necesario incluir la versión mas r
 <script src="/path/to/translate.min.js"></script>
 ```
 
+## Definición de idiomas
+
+Un punto importante cuando se estan creando los distintos idiomas que majenara nuestro sitio, es que las variables deben ser declaradas de la siguiente forma lang_```name```:
+
+> ```name``` puede ser llamado de la forma en que queramos, ```lang_``` es obligatorio, todo esto en función de evitar conflictos de entornos.
+
+```javascript
+var lang_ES = {
+	greetings: {
+		hello: 'Hola!'
+	},
+
+	/**
+	 * Más definiciones
+	 */
+};
+
+var lang_EN = {
+	greetings: {
+		hello: 'Hello!'
+	},
+
+	/**
+	 * Más definiciones
+	 */
+};
+```
+
 ## Usabilidad HMTL:
 
 Asigna el contenido HTML del elemento al resultado del keyword:
@@ -54,32 +82,4 @@ Traduce todos los elementos HTML configurados debidamente:
 
 ```javascript
 Translate.init();
-```
-
-## Creación de idiomas
-
-Un punto importante cuando se estan creando los distintos idiomas que majenara nuestro sitio, es que las variables deben ser declaradas de la siguiente forma lang_```name```:
-
-> ```name``` puede ser llamado de la forma en que queramos, ```lang_``` es obligatorio, todo esto en función de evitar conflictos de entornos.
-
-```
-var lang_ES = {
-	greetings: {
-		hello: 'Hola!'
-	},
-
-	/**
-	 * Más definiciones
-	 */
-};
-
-var lang_EN = {
-	greetings: {
-		hello: 'Hello!'
-	},
-
-	/**
-	 * Más definiciones
-	 */
-};
 ```
