@@ -41,13 +41,13 @@ var lang_EN = {
 
 ## Usabilidad HMTL:
 
-Asigna el contenido HTML del elemento al resultado del keyword asignado a través de la directiva ```data-translate```:
+Cambia el contenido del elemento con su correspondiente traducción, según lo asignado a través de la directiva ```data-translate```:
 
 ```html
 <span class="translate" data-translate="hello"></span>
 ```
 
-En los campos de tipo ```input``` establece el placeholder del elemento al resultado del keyword:
+En los campos de tipo ```input``` se cambia el ```placeholder```:
 
 ```html
 <input type="text" class="translate" data-translate="greetings.good.morning">
