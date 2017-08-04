@@ -1,4 +1,6 @@
 /**
+ *	Translate.js
+ *
  *	Estas funciones orientadas a clases, permiten el manejo de traducciones de un
  *	sistema que contenga HTML o JavaScript, permitiendo la traducción completa de
  * 	la página con solo agregar a los campos que queremos traducidos lo siguiente:
@@ -9,7 +11,8 @@
  *	El contenido de estos keywords deben estar en variables globales en formato
  *	json
  *
- *												git@github.com:m_yei:/translate
+ *
+ *												git@github.com:m_yei:/translate.js
  */
 
 var Translate = function () {
