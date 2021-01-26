@@ -19,9 +19,9 @@ Los siguientes son los valores por defecto, se pueden especificar sólo los valo
 
 ```javascript
 var options = {
-	lang: 		'es',			// Valores: 'browser', 'nombre_idioma', Objeto JSON
-	prefix: 	'lang_',		// Prefijo de los objetos
-	className: 	'translate'		// Clase de los campos a traducir
+	lang: 		'es',		// Valores: 'browser', 'nombre_idioma', Objeto JSON
+	prefix: 	'lang_',	// Prefijo de los objetos
+	className: 	'translate'	// Clase de los campos a traducir
 };
 ```
 
