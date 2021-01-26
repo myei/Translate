@@ -1,4 +1,4 @@
-var es = {
+var lang_es = {
 	
 	hello: 'Hola',
 

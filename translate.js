@@ -15,45 +15,57 @@
  *												git@github.com:m_yei:/translate.js
  */
 
-var Translate = function () {
-
+var Translate = function (user_options) {
+	
 	/**
-	 *	Idioma por defecto
+	 *	Valores por defecto
 	 */
-	var lang = 'lang_es';
+	var options = {lang: 'es', prefix: 'lang_', className: 'translate'};
+
+	var _this = this;
+
+	var build = function (user_options) {
+		options = Object.assign(options, user_options);
+		setLang(options.lang);
+
+		if (isLangDefined())
+			translateFields();
+		else
+			console.error('[translate.js] Objeto de idioma `'+ options.prefix + options.lang + '` no encontrado. Por favor incluya los archivos de idioma.');
+	};
 
 	/**
 	 *	Si queremos establecer el idioma del navegador
 	 */
-	var useBrowserLang = function (useIt) {
-		lang = useIt ? 'lang_' + (navigator.language || navigator.userLanguage).substr(0,2) : lang;
+	var getBrowserLang = function () {
+		return (navigator.language || navigator.userLanguage).substr(0,2);
 	};
 
 	/**
 	 *	Para establecer un idioma en específico (de los existentes)
 	 */
 	var setLang = function (_lang) {
-		lang = typeof window['lang_' + _lang] === 'undefined' ? lang : 'lang_' + _lang;
+		console.log(options.prefix + _lang);
+		_this.lang = _lang.toLowerCase() === 'browser' ? window[options.prefix + getBrowserLang()] : window[options.prefix + _lang];
+	};
+
+	var isLangDefined = function () {
+		return !!_this.lang;
 	};
 
 	/**
 	 *	Getter del idioma en uso
 	 */
 	var getLang = function () {
-		return lang;	
+		return options.lang;
 	};
 
 	/**
 	 *	Esta función traduce todos los elementos debidamente configurados
 	 */
 	var translateFields = function () {
-		jQuery('.translate').each(function(index, el) {
-
-			if (el.nodeName.toLowerCase() === 'input')
-				jQuery(this).prop('placeholder', get(jQuery(this).data('translate')));
-			else
-				jQuery(this).html(get(jQuery(this).data('translate')));
-
+		document.querySelectorAll('.' + options.className).forEach(function(field) {
+			field[field.nodeName.toLowerCase() === 'input' ? 'placeholder' : 'innerHTML'] = get(field.dataset.translate);
 		}); 
 	};
 
@@ -61,25 +73,19 @@ var Translate = function () {
 	 *	Para obtener la traducción de algun keyword en el contexto JavaScript
 	 */
 	var get = function (argument) {
-		return argument.split('.').reduce(function (a, b) { return a[b]; }, window[lang]);
+		return argument.split('.').reduce(function (a, b) { return a[b]; }, _this.lang || []);
 	};
 
+	build(user_options);
+	
+
 	return {
-		setLang: function () {
-			return setLang();
-		},
 		getLang: function () {
 			return getLang();
 		},
-		useBrowserLang: function () {
-			return useBrowserLang();
-		},
-		get: function () {
-			return get();
-		},
-		init: function (argument) {
-			translateFields();
+		get: function (argument) {
+			return get(argument);
 		}
 	};
 
-}();
+};

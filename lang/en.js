@@ -1,4 +1,4 @@
-var en = {
+var lang_en = {
 	
 	hello: 'Hello',
 
