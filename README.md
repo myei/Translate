@@ -82,6 +82,10 @@ Cambia el contenido de los elementos con su correspondiente traducción, según 
 
 ```html
 <span class="translate" data-translate="hello"></span>
+
+<select>
+	<option class="translate" data-translate="greetings.hey"></option>
+</select>
 ```
 
 En los campos de tipo ```input``` se cambia el ```placeholder```:
