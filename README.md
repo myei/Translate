@@ -3,6 +3,9 @@
 <p>Este plugin está orientado al manejo de varios idiomas en el contexto HTML y JavaScript.</p>
 
 > No necesita jQuery.
+## Ejemplos de uso:
+
+Puedes probar el demo [aqui](https://myei.github.io/translate.js/).
 
 ## Incluyendo recursos
 
