@@ -1,28 +1,12 @@
 /**
  *	Translate.js
  *
- *	Estas funciones orientadas a clases, permiten el manejo de traducciones de un
- *	sistema que contenga HTML o JavaScript, permitiendo la traducción completa de
- * 	la página con solo agregar a los campos que queremos traducidos lo siguiente:
- *
- *		- clase: translate
- *		- data-translate: <keywords a traducir, eg: hello or hello.world>
- *	
- *	El contenido de estos keywords deben estar en variables globales en formato
- *	json
- *
- *
- *												git@github.com:m_yei:/translate.js
+ *												https://github.com/myei/translate.js
  */
 
 var Translate = function (user_options) {
-	
-	/**
-	 *	Valores por defecto
-	 */
-	var options = {lang: 'es', prefix: 'lang_', className: 'translate'};
 
-	var _this = this;
+	var options = {lang: 'es', prefix: 'lang_', className: 'translate'}, _this = this;
 
 	var build = function (user_options) {
 		options = Object.assign(options, user_options);
@@ -34,18 +18,11 @@ var Translate = function (user_options) {
 			console.error('[translate.js] Objeto de idioma `'+ options.prefix + options.lang + '` no encontrado. Por favor incluya los archivos de idioma.');
 	};
 
-	/**
-	 *	Si queremos establecer el idioma del navegador
-	 */
 	var getBrowserLang = function () {
 		return (navigator.language || navigator.userLanguage).substr(0,2);
 	};
 
-	/**
-	 *	Para establecer un idioma en específico (de los existentes)
-	 */
 	var setLang = function (_lang) {
-		console.log(options.prefix + _lang);
 		_this.lang = _lang.toLowerCase() === 'browser' ? window[options.prefix + getBrowserLang()] : window[options.prefix + _lang];
 	};
 
@@ -53,25 +30,19 @@ var Translate = function (user_options) {
 		return !!_this.lang;
 	};
 
-	/**
-	 *	Getter del idioma en uso
-	 */
 	var getLang = function () {
 		return options.lang;
 	};
 
-	/**
-	 *	Esta función traduce todos los elementos debidamente configurados
-	 */
 	var translateFields = function () {
 		document.querySelectorAll('.' + options.className).forEach(function(field) {
-			field[field.nodeName.toLowerCase() === 'input' ? 'placeholder' : 'innerHTML'] = get(field.dataset.translate);
+			if (field.dataset.translate)
+				field[field.nodeName.toLowerCase() === 'input' ? 'placeholder' : 'innerHTML'] = get(field.dataset.translate);
+			else
+				console.warn('[translate.js] No se encontró el atributo `data-translate` en el campo:', field);
 		}); 
 	};
 
-	/**
-	 *	Para obtener la traducción de algun keyword en el contexto JavaScript
-	 */
 	var get = function (argument) {
 		return argument.split('.').reduce(function (a, b) { return a[b]; }, _this.lang || []);
 	};
