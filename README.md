@@ -79,15 +79,17 @@ t.get('key.words');
 
 ## Configuración HMTL:
 
-Cambia el contenido de los elementos con su correspondiente traducción, según lo asignado a través de la directiva ```data-translate```:
+Cambia el contenido de los elementos con su correspondiente traducción, según lo asignado a través de la directiva ```data-translate```  ó  ```data-translate-prop```:
 
 > Deben tener la clase definida en `options.className` (por defecto: 'translate')
+
+> La traducción por defecto se asignará a `innerHTML` en todos los campos y `placeholder` para los input, si quieremos mostrar la traducción en otra propiedad del campo podemos usar `translate-prop` donde `prop` debe ser alguna propiedad html, (ej: `title`, `value`)
 
 ```html
 <span class="translate" data-translate="hello"></span>
 
 <select>
-	<option class="translate" data-translate="greetings.hey"></option>
+	<option class="translate" data-translate="greetings.hey" data-translate-value="greetings.hey"></option> <!-- Esto imprimirá el valor tanto en `innerHTML` como en el `value` del select-->
 </select>
 ```
 

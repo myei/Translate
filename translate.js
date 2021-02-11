@@ -35,16 +35,31 @@ var Translate = function (user_options) {
 	};
 
 	var translateFields = function () {
+		var criteria, target;
 		document.querySelectorAll('.' + options.className).forEach(function(field) {
-			if (field.dataset.translate)
-				field[field.nodeName.toLowerCase() === 'input' ? 'placeholder' : 'innerHTML'] = get(field.dataset.translate);
-			else
-				console.warn('[translate.js] No se encontró el atributo `data-translate` en el campo:', field);
+			var field_criteria = Object.keys(field.dataset).filter(function(data) { 
+				if (!data.indexOf('translate')) {
+					criteria = data.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase().split('-');
+					target = criteria.length > 1 ? criteria[1] : field.nodeName.toLowerCase() === 'input' ? 'placeholder' : 'innerHTML';
+
+					field[target] = get(field.dataset[!!criteria.length ? data : 'translate']);
+					
+					return data;
+				}
+			});
+			
+			if (field_criteria.length === 0) 
+				console.warn('[translate.js] No se encontró atributo `data-translate*` en el campo:', field);
 		}); 
 	};
 
 	var get = function (argument) {
-		return argument.split('.').reduce(function (a, b) { return a[b]; }, _this.lang || []);
+		var translated = argument.split('.').reduce(function (a, b) { return a[b] || ''; }, _this.lang || []);
+		
+		if (translated.length === 0) 
+			console.error('[translate.js] No se encontró el keyword:', argument);
+		
+		return translated;
 	};
 
 	build(user_options);
